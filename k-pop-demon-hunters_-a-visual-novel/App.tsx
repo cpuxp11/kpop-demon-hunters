@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import { GameState, SceneId } from './types';
-import { translations } from './gameData';
+import { translations } from './gameData_v2';
 import GameScreen from './components/GameScreen';
 
 type Language = 'en' | 'ko';
@@ -41,7 +41,8 @@ const App: React.FC = () => {
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [autoAdvanceTimer, setAutoAdvanceTimer] = useState<NodeJS.Timeout | null>(null);
-  
+  const [gameFlags, setGameFlags] = useState<{ [key: string]: number | boolean }>({});
+
   const currentScene = gameData[currentSceneId];
   const currentDialogue = currentScene?.dialogue[dialogueIndex];
 
@@ -109,8 +110,13 @@ const App: React.FC = () => {
       setAutoAdvanceTimer(null);
     }
 
-    // 타이핑이 완료되고, 선택지가 없을 때만 자동 진행 설정
-    if (!isTyping && gameState === GameState.Playing && currentScene && (!currentScene.choices || currentScene.choices.length === 0)) {
+    // 조건을 만족하는 선택지가 있는지 확인
+    const availableChoices = currentScene?.choices?.filter(choice =>
+      !choice.condition || evaluateCondition(choice.condition)
+    ) || [];
+
+    // 타이핑이 완료되고, 사용 가능한 선택지가 없을 때만 자동 진행 설정
+    if (!isTyping && gameState === GameState.Playing && currentScene && availableChoices.length === 0) {
       const timer = setTimeout(() => {
         if (dialogueIndex < currentScene.dialogue.length - 1) {
           setDialogueIndex(prev => prev + 1);
@@ -131,6 +137,30 @@ const App: React.FC = () => {
       }
     };
   }, [isTyping, gameState, currentScene, dialogueIndex]);
+
+  // Scene onEnter 효과 처리
+  useEffect(() => {
+    if (currentScene && currentScene.onEnter) {
+      setGameFlags(prevFlags => {
+        const newFlags = { ...prevFlags };
+        currentScene.onEnter!.forEach(effect => {
+          const currentValue = newFlags[effect.flag] || 0;
+          switch (effect.type) {
+            case 'set':
+              newFlags[effect.flag] = effect.value;
+              break;
+            case 'add':
+              newFlags[effect.flag] = (typeof currentValue === 'number' ? currentValue : 0) + (typeof effect.value === 'number' ? effect.value : 0);
+              break;
+            case 'subtract':
+              newFlags[effect.flag] = (typeof currentValue === 'number' ? currentValue : 0) - (typeof effect.value === 'number' ? effect.value : 0);
+              break;
+          }
+        });
+        return newFlags;
+      });
+    }
+  }, [currentSceneId]);
 
   // 키보드 이벤트 리스너 추가
   useEffect(() => {
@@ -156,10 +186,61 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const handleChoice = (nextScene: SceneId) => {
-    // TODO: 플래그 효과 처리 (현재는 무시)
+  const handleChoice = (nextScene: SceneId, flagEffects?: Array<{type: 'set' | 'add' | 'subtract', flag: string, value: number | boolean}>) => {
+    // 플래그 효과 처리
+    if (flagEffects) {
+      setGameFlags(prevFlags => {
+        const newFlags = { ...prevFlags };
+        flagEffects.forEach(effect => {
+          const currentValue = newFlags[effect.flag] || 0;
+          switch (effect.type) {
+            case 'set':
+              newFlags[effect.flag] = effect.value;
+              break;
+            case 'add':
+              newFlags[effect.flag] = (typeof currentValue === 'number' ? currentValue : 0) + (typeof effect.value === 'number' ? effect.value : 0);
+              break;
+            case 'subtract':
+              newFlags[effect.flag] = (typeof currentValue === 'number' ? currentValue : 0) - (typeof effect.value === 'number' ? effect.value : 0);
+              break;
+          }
+        });
+        return newFlags;
+      });
+    }
+
     setCurrentSceneId(nextScene);
     setDialogueIndex(0);
+  };
+
+  // 조건 평가 함수
+  const evaluateCondition = (condition: string): boolean => {
+    if (!condition) return true;
+
+    // 간단한 조건 파싱 (예: "JinwooTrust >= 30")
+    const parts = condition.split(/(\>=|\<=|>|<|==|!=)/);
+    if (parts.length === 3) {
+      const flagName = parts[0].trim();
+      const operator = parts[1].trim();
+      const value = parseInt(parts[2].trim());
+      const flagValue = gameFlags[flagName] || 0;
+
+      switch (operator) {
+        case '>=': return (typeof flagValue === 'number' ? flagValue : 0) >= value;
+        case '<=': return (typeof flagValue === 'number' ? flagValue : 0) <= value;
+        case '>': return (typeof flagValue === 'number' ? flagValue : 0) > value;
+        case '<': return (typeof flagValue === 'number' ? flagValue : 0) < value;
+        case '==': return flagValue == value;
+        case '!=': return flagValue != value;
+      }
+    }
+
+    // OR 조건 처리 (예: "JinwooTrust >= 10 || Courage >= 25")
+    if (condition.includes('||')) {
+      return condition.split('||').some(cond => evaluateCondition(cond.trim()));
+    }
+
+    return true;
   };
 
   const startGame = () => {
@@ -214,6 +295,7 @@ const App: React.FC = () => {
             typedText={text}
             onNext={handleNext}
             onChoice={handleChoice}
+            evaluateCondition={evaluateCondition}
           />
         )}
         
