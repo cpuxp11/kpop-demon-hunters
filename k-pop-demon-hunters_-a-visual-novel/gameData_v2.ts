@@ -14,9 +14,9 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Jinu': {
     name: 'Jinu',
     sprites: {
-      'neutral': './Jinwoo.jpeg',
-      'serious': './Jinwoo.jpeg',
-      'sad': './Jinwoo.jpeg',
+      'neutral': './Jinwoo.png',
+      'serious': './Jinwoo.png',
+      'sad': './Jinwoo.png',
       'human': './Jinwoo_human.png',
       'demon': './Jinwoo_Saja.png',
       'betrayal': './Jinwoo_Saja.png'
