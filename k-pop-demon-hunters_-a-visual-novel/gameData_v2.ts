@@ -98,7 +98,7 @@ const enGameData: GameData = {
   },
 
   'rumi_performance_crisis': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: 'Meanwhile, HUNTR/X performs before thousands of adoring fans.' },
       { character: 'Mira', emotion: 'neutral', text: 'The energy tonight is incredible!', position: 'left' },
@@ -145,7 +145,7 @@ const enGameData: GameData = {
       { character: 'Narrator', text: 'The scent of medicinal herbs fills the ancient clinic. Rumi sits alone, lost in thought.' },
       { character: 'Rumi', emotion: 'sad', text: 'These patterns... they\'re spreading faster. What if they see? What if they know what I really am?', position: 'left' },
       { character: 'Narrator', text: 'A gentle voice interrupts her thoughts.' },
-      { character: 'Jinu', emotion: 'neutral', text: 'Hiding something?', position: 'right' },
+      { character: 'Jinu', emotion: 'human', text: 'Hiding something?', position: 'right' },
       { character: 'Rumi', emotion: 'surprised', text: 'You! You\'re from Saja Boys! What are you doing here?', position: 'left' },
       { character: 'Jinu', emotion: 'neutral', text: 'Perhaps the same as you. Looking for answers to questions we\'re afraid to ask.', position: 'right' },
       { character: 'Narrator', text: 'His eyes linger on her collar, which barely conceals the creeping marks.' },
@@ -337,7 +337,7 @@ const enGameData: GameData = {
   // ========== ACT 3: 배신과 3가지 운명 ==========
 
   'final_performance_crisis': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: 'The performance begins beautifully. The crowd is mesmerized by HUNTR/X\'s music.' },
       { character: 'Rumi', emotion: 'neutral', text: '(I can do this. I can control it. For them... for everyone who believes in us.)', position: 'center' },
@@ -350,20 +350,20 @@ const enGameData: GameData = {
   },
 
   'final_choice_setup': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: 'Chaos erupts. Fans scream and flee. Mira and Zoey rush to Rumi\'s side.' },
       { character: 'Mira', emotion: 'neutral', text: 'Rumi! Whatever this is, we\'ll face it together!', position: 'left' },
       { character: 'Zoey', emotion: 'neutral', text: 'You\'re still our leader! You\'re still our friend!', position: 'right' },
       { character: 'Narrator', text: 'Suddenly, Jinu appears on stage, his face conflicted between duty and conscience.' },
-      { character: 'Jinu', emotion: 'serious', text: 'Rumi... I\'m sorry. I tried to fight it, but Gwi-Ma\'s control...', position: 'center' },
+      { character: 'Jinu', emotion: 'demon', text: 'Rumi... I\'m sorry. I tried to fight it, but Gwi-Ma\'s control...', position: 'center' },
       { character: 'Narrator', text: 'This is the moment of truth. How will Rumi respond to this ultimate betrayal?' },
     ],
     nextScene: 'final_choice',
   },
 
   'final_choice': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: 'Everything hangs in the balance. The choice Rumi makes now will determine not just her fate, but the fate of everyone she cares about.' },
     ],
@@ -391,7 +391,7 @@ const enGameData: GameData = {
   // ========== ENDINGS ==========
 
   'happy_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_HAPPY_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'neutral', text: 'Jinu! You can still choose who you want to be! 400 years of pain doesn\'t have to define you!', position: 'left' },
       { character: 'Jinu', emotion: 'surprised', text: 'Rumi... even after everything, you still...?', position: 'right' },
@@ -405,7 +405,7 @@ const enGameData: GameData = {
   },
 
   'bittersweet_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: 'I am both hunter and demon - and I choose to protect those I love!', position: 'center' },
       { character: 'Narrator', text: 'Rumi\'s song erupts with newfound power, but Gwi-Ma retaliates with devastating force.' },
@@ -420,7 +420,7 @@ const enGameData: GameData = {
   },
 
   'bad_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: 'I don\'t need anyone! I\'ll face this alone!', position: 'center' },
       { character: 'Narrator', text: 'But isolation is exactly what Gwi-Ma wanted. Alone, Rumi cannot muster enough power.' },
@@ -468,7 +468,7 @@ const koGameData: GameData = {
   },
 
   'rumi_performance_crisis': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: '한편, 헌트릭스는 수만 명의 열광적인 팬들 앞에서 공연을 하고 있다.' },
       { character: 'Mira', emotion: 'neutral', text: '오늘 밤 에너지가 대단해!', position: 'left' },
@@ -699,7 +699,7 @@ const koGameData: GameData = {
   },
 
   'final_performance_crisis': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: '공연이 아름답게 시작된다. 관중은 헌트릭스의 음악에 매혹된다.' },
       { character: 'Rumi', emotion: 'neutral', text: '(할 수 있어. 통제할 수 있어. 그들을 위해... 우리를 믿는 모든 사람을 위해.)', position: 'center' },
@@ -712,7 +712,7 @@ const koGameData: GameData = {
   },
 
   'final_choice_setup': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: '혼돈이 터진다. 팬들이 비명을 지르며 도망친다. 미라와 조이가 루미의 곁으로 달려온다.' },
       { character: 'Mira', emotion: 'neutral', text: '루미! 이게 뭐든, 함께 맞서자!', position: 'left' },
@@ -725,7 +725,7 @@ const koGameData: GameData = {
   },
 
   'final_choice': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Narrator', text: '모든 것이 균형에 달려 있다. 루미가 지금 내리는 선택이 그녀의 운명뿐만 아니라 그녀가 소중히 여기는 모든 사람의 운명을 결정할 것이다.' },
     ],
@@ -751,7 +751,7 @@ const koGameData: GameData = {
   },
 
   'happy_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_HAPPY_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'neutral', text: '진우! 넌 여전히 누가 될지 선택할 수 있어! 400년의 고통이 너를 정의할 필요는 없어!', position: 'left' },
       { character: 'Jinu', emotion: 'surprised', text: '루미... 이 모든 일 후에도, 넌 여전히...?', position: 'right' },
@@ -765,7 +765,7 @@ const koGameData: GameData = {
   },
 
   'bittersweet_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: '나는 헌터이자 악령 - 그리고 사랑하는 사람들을 보호하기로 선택해!', position: 'center' },
       { character: 'Narrator', text: '루미의 노래가 새로운 힘으로 터져 나오지만, 귀마가 파괴적인 힘으로 반격한다.' },
@@ -780,7 +780,7 @@ const koGameData: GameData = {
   },
 
   'bad_ending_path': {
-    background: BG_CONCERT_STAGE,
+    background: BG_STADIUM,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: '누구도 필요 없어! 혼자서 맞설 거야!', position: 'center' },
       { character: 'Narrator', text: '하지만 고립이 바로 귀마가 원하던 것이었다. 혼자서는 루미가 충분한 힘을 모을 수 없다.' },
