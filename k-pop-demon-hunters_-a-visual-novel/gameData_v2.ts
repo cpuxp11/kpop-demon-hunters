@@ -16,7 +16,10 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
     sprites: {
       'neutral': './Jinwoo.jpeg',
       'serious': './Jinwoo.jpeg',
-      'sad': './Jinwoo.jpeg'
+      'sad': './Jinwoo.jpeg',
+      'human': './Jinwoo_human.png',
+      'demon': './Jinwoo_Saja.png',
+      'betrayal': './Jinwoo_Saja.png'
     },
   },
   'Mira': {
@@ -54,6 +57,11 @@ const BG_NIGHT_STREET = './2.background.png';
 const BG_AWARDS = './3.background_start.jpg';
 const BG_NAMSAN_TOWER = 'https://i.imgur.com/vHqQwgA.jpg';
 const BG_UNDERGROUND = './2.background.png'; // 지하세계
+
+// 새로운 배경들
+const BG_STADIUM = './4.background_stadium.png'; // 공연장
+const BG_HAPPY_ENDING = './5.background_happyending.png'; // 해피엔딩
+const BG_BETRAYED_RUMI = './6.background_betrayedRumi.png'; // 루미 배신
 
 const enGameData: GameData = {
   // ========== ACT 1: 귀마의 계략과 운명적 만남 ==========
