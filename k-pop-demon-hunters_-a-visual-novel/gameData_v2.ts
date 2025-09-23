@@ -37,7 +37,7 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Gwi-Ma': {
     name: 'Gwi-Ma',
     sprites: {
-      'neutral': 'https://i.imgur.com/FwWk8c5.png'
+      'neutral': './Gwi-Ma.png'
     },
   },
   'Duffy': {
