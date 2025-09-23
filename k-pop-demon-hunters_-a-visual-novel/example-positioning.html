@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-pop Demon Hunters - 캐릭터 포지셔닝 예제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 메인 게임 스테이지 - CSS Grid 기반 */
+        .character-stage {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr auto;
+            height: 100vh;
+            position: relative;
+            background: url('./public/1.background.png') center/cover;
+        }
+
+        /* 캐릭터 스프라이트 기본 스타일 */
+        .character-sprite {
+            align-self: end;
+            justify-self: center;
+            max-height: 70vh;
+            width: auto;
+            transition: filter 0.3s ease, transform 0.3s ease;
+            object-fit: contain;
+            margin-bottom: 5vh;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        /* 포지션별 스타일 */
+        .character-left {
+            grid-column: 1;
+            justify-self: start;
+            margin-left: 15%;
+        }
+
+        .character-center {
+            grid-column: 2;
+            justify-self: center;
+        }
+
+        .character-right {
+            grid-column: 3;
+            justify-self: end;
+            margin-right: 15%;
+        }
+
+        /* 캐릭터 상태 */
+        .character-speaking {
+            filter: brightness(100%) drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .character-dimmed {
+            filter: brightness(75%) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            transform: scale(0.98);
+        }
+
+        /* 대화 박스 */
+        .dialogue-area {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            margin: 0 20px 20px 20px;
+            border-radius: 15px;
+            border: 2px solid #9333ea;
+        }
+
+        .speaker-name {
+            color: #a855f7;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .character-sprite {
+                max-height: 60vh;
+                margin-bottom: 8vh;
+            }
+
+            .character-left {
+                margin-left: 10%;
+            }
+
+            .character-right {
+                margin-right: 10%;
+            }
+
+            .dialogue-area {
+                margin: 0 10px 10px 10px;
+                padding: 15px;
+            }
+
+            .speaker-name {
+                font-size: 1.1em;
+            }
+
+            .dialogue-text {
+                font-size: 1em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .character-sprite {
+                max-height: 75vh;
+                margin-bottom: 5vh;
+            }
+
+            .character-left {
+                margin-left: 20%;
+            }
+
+            .character-right {
+                margin-right: 20%;
+            }
+        }
+
+        /* 접근성 고려 */
+        @media (prefers-reduced-motion: reduce) {
+            .character-sprite {
+                transition: none;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            .character-dimmed {
+                filter: brightness(50%) drop-shadow(0 5px 15px rgba(0,0,0,0.7));
+            }
+        }
+
+        /* 제어 버튼 */
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .btn {
+            background: #9333ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #7c3aed;
+        }
+
+        /* 정보 패널 */
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="character-stage">
+        <!-- 캐릭터들 -->
+        <img src="./public/Jinwoo.jpeg" alt="Jinwoo" class="character-sprite character-left character-dimmed" id="jinwoo">
+        <img src="./public/Rumi.png" alt="Rumi" class="character-sprite character-center character-speaking" id="rumi">
+        <img src="./public/Mira.png" alt="Mira" class="character-sprite character-right character-dimmed" id="mira">
+
+        <!-- 대화 영역 -->
+        <div class="dialogue-area">
+            <div class="speaker-name" id="speaker">Rumi</div>
+            <div class="dialogue-text" id="dialogue">
+                "오늘 밤 콘서트에서 뭔가 이상한 기운이 느껴져... 혹시 귀마들이 또 나타나는 건 아니겠지?"
+            </div>
+        </div>
+    </div>
+
+    <!-- 제어 버튼 -->
+    <div class="controls">
+        <button class="btn" onclick="showScene1()">Scene 1</button>
+        <button class="btn" onclick="showScene2()">Scene 2</button>
+        <button class="btn" onclick="showScene3()">Scene 3</button>
+    </div>
+
+    <!-- 정보 패널 -->
+    <div class="info-panel">
+        <strong>전문가 권장 포지셔닝 데모</strong><br>
+        Left: 15-20% (보조 캐릭터)<br>
+        Center: 50% (주요 화자)<br>
+        Right: 80-85% (대화 상대)<br>
+        <br>
+        <strong>반응형:</strong><br>
+        Mobile: 60vh 높이<br>
+        Desktop: 75vh 높이<br>
+        <br>
+        <strong>효과:</strong><br>
+        Speaking: 100% 밝기<br>
+        Others: 75% 밝기
+    </div>
+
+    <script>
+        function showScene1() {
+            // Rumi가 말하는 장면
+            document.getElementById('jinwoo').className = 'character-sprite character-left character-dimmed';
+            document.getElementById('rumi').className = 'character-sprite character-center character-speaking';
+            document.getElementById('mira').className = 'character-sprite character-right character-dimmed';
+
+            document.getElementById('speaker').textContent = 'Rumi';
+            document.getElementById('dialogue').textContent = '"오늘 밤 콘서트에서 뭔가 이상한 기운이 느껴져... 혹시 귀마들이 또 나타나는 건 아니겠지?"';
+        }
+
+        function showScene2() {
+            // Jinwoo가 말하는 장면
+            document.getElementById('jinwoo').className = 'character-sprite character-left character-speaking';
+            document.getElementById('rumi').className = 'character-sprite character-center character-dimmed';
+            document.getElementById('mira').className = 'character-sprite character-right character-dimmed';
+
+            document.getElementById('speaker').textContent = 'Jinwoo';
+            document.getElementById('dialogue').textContent = '"그럴 가능성이 높아. 최근 들어 악마들의 활동이 더욱 활발해지고 있거든."';
+        }
+
+        function showScene3() {
+            // Mira가 말하는 장면
+            document.getElementById('jinwoo').className = 'character-sprite character-left character-dimmed';
+            document.getElementById('rumi').className = 'character-sprite character-center character-dimmed';
+            document.getElementById('mira').className = 'character-sprite character-right character-speaking';
+
+            document.getElementById('speaker').textContent = 'Mira';
+            document.getElementById('dialogue').textContent = '"내 시스템 분석 결과로는 90% 확률로 오늘 밤에 뭔가 일어날 거야. 준비해둬."';
+        }
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '1') showScene1();
+            if (event.key === '2') showScene2();
+            if (event.key === '3') showScene3();
+        });
+    </script>
+</body>
+</html>
