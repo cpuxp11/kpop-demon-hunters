@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import { GameState, SceneId } from './types';
 import { translations } from './gameData_v2';
-import GameScreen from './components/GameScreen';
+import GameScreen from './components/GameScreen_v2';
 
 type Language = 'en' | 'ko';
 
