@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Mobile Character Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .character-current {
+            max-width: 30vw;
+            min-height: 50vh;
+            height: 60vh;
+        }
+
+        .character-test {
+            max-width: min(45vw, 300px);
+            min-height: 50vh;
+            height: 60vh;
+        }
+
+        @media (min-width: 768px) {
+            .character-test {
+                max-width: 30vw; /* 데스크톱에서는 기존과 동일 */
+            }
+        }
+
+        .speaking-effect {
+            filter: brightness(1.0);
+            transform: scale(1.15);
+        }
+
+        @media (min-width: 640px) {
+            .speaking-effect {
+                transform: scale(1.02);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-purple-900 to-pink-900">
+
+    <!-- 헤더 -->
+    <div class="text-center py-8">
+        <h1 class="text-3xl font-bold text-white mb-4">📱 모바일 캐릭터 크기 비교</h1>
+        <p class="text-gray-300">좌측: 기존 (30vw) | 우측: 모바일 강화 (45vw)</p>
+
+        <!-- Speaking 효과 토글 버튼 -->
+        <div class="mt-4">
+            <button
+                onclick="toggleSpeaking()"
+                id="speakingBtn"
+                class="bg-gray-600 text-gray-300 px-4 py-2 rounded transition-colors hover:bg-gray-500"
+            >
+                😶 Silent (클릭하여 Speaking 효과 테스트)
+            </button>
+        </div>
+
+        <!-- 화면 크기 정보 -->
+        <div class="mt-4">
+            <div class="inline-block bg-black/30 backdrop-blur rounded-lg px-4 py-2 text-white text-sm">
+                <span class="block sm:hidden">📱 Mobile (&lt; 640px)</span>
+                <span class="hidden sm:block md:hidden">📱 Tablet (640px-768px)</span>
+                <span class="hidden md:block">💻 Desktop (≥ 768px)</span>
+                <div class="mt-1 text-xs text-gray-300">
+                    화면 너비: <span id="screen-width">-</span>px
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 비교 영역 -->
+    <div class="grid grid-cols-2 gap-4 px-4 h-[70vh]">
+
+        <!-- 기존 버전 -->
+        <div class="relative border-2 border-blue-400 rounded-lg bg-black/20 backdrop-blur overflow-hidden">
+            <div class="absolute top-2 left-2 bg-blue-500 text-white px-2 py-1 text-xs rounded z-10">
+                🔵 CURRENT (30vw)
+            </div>
+            <div class="h-full flex items-end justify-center">
+                <img
+                    id="currentChar"
+                    src="./Rumi.png"
+                    alt="Rumi Current"
+                    class="character-current w-auto object-contain drop-shadow-lg transition-all duration-500"
+                    style="filter: brightness(0.75);"
+                />
+            </div>
+        </div>
+
+        <!-- 테스트 버전 -->
+        <div class="relative border-2 border-green-400 rounded-lg bg-black/20 backdrop-blur overflow-hidden">
+            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded z-10">
+                🟢 TEST (45vw mobile)
+            </div>
+            <div class="h-full flex items-end justify-center">
+                <img
+                    id="testChar"
+                    src="./Rumi.png"
+                    alt="Rumi Test"
+                    class="character-test w-auto object-contain drop-shadow-lg transition-all duration-500"
+                    style="filter: brightness(0.75);"
+                />
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 크기 정보 -->
+    <div class="mt-8 px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto text-white">
+            <div class="bg-black/30 backdrop-blur rounded-lg p-4 text-center">
+                <h3 class="font-semibold mb-2">📱 Mobile (360px)</h3>
+                <p class="text-sm">
+                    현재: <span class="text-blue-400">108px</span><br/>
+                    테스트: <span class="text-green-400">162px (+50%)</span>
+                </p>
+            </div>
+            <div class="bg-black/30 backdrop-blur rounded-lg p-4 text-center">
+                <h3 class="font-semibold mb-2">📱 iPhone (390px)</h3>
+                <p class="text-sm">
+                    현재: <span class="text-blue-400">117px</span><br/>
+                    테스트: <span class="text-green-400">175px (+50%)</span>
+                </p>
+            </div>
+            <div class="bg-black/30 backdrop-blur rounded-lg p-4 text-center">
+                <h3 class="font-semibold mb-2">💻 Desktop (1920px)</h3>
+                <p class="text-sm">
+                    현재: <span class="text-blue-400">576px</span><br/>
+                    테스트: <span class="text-green-400">300px (제한)</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 테스트 가이드 -->
+    <div class="mt-8 px-4 text-center text-gray-300 text-sm max-w-2xl mx-auto pb-8">
+        <p class="mb-2">🔍 <strong>테스트 방법:</strong></p>
+        <p>1. Chrome DevTools → F12 → Device Toolbar (모바일 아이콘)</p>
+        <p>2. iPhone 12, Galaxy S20 등으로 설정</p>
+        <p>3. 좌우 캐릭터 크기 비교 + Speaking 버튼 테스트</p>
+        <p class="mt-2 text-yellow-300">💡 모바일에서는 우측이 훨씬 크게 보여야 함!</p>
+    </div>
+
+    <script>
+        let isSpeaking = false;
+
+        // Speaking 효과 토글
+        function toggleSpeaking() {
+            isSpeaking = !isSpeaking;
+            const currentChar = document.getElementById('currentChar');
+            const testChar = document.getElementById('testChar');
+            const btn = document.getElementById('speakingBtn');
+
+            if (isSpeaking) {
+                // Speaking 상태
+                currentChar.style.filter = 'brightness(1.0)';
+                currentChar.style.transform = window.innerWidth < 640 ? 'scale(1.15)' : 'scale(1.02)';
+                testChar.style.filter = 'brightness(1.0)';
+                testChar.style.transform = window.innerWidth < 640 ? 'scale(1.15)' : 'scale(1.02)';
+
+                btn.textContent = '🗣️ Speaking (클릭하여 Silent로 변경)';
+                btn.className = 'bg-green-500 text-white px-4 py-2 rounded transition-colors hover:bg-green-400';
+            } else {
+                // Silent 상태
+                currentChar.style.filter = 'brightness(0.75)';
+                currentChar.style.transform = 'scale(1.0)';
+                testChar.style.filter = 'brightness(0.75)';
+                testChar.style.transform = 'scale(1.0)';
+
+                btn.textContent = '😶 Silent (클릭하여 Speaking 효과 테스트)';
+                btn.className = 'bg-gray-600 text-gray-300 px-4 py-2 rounded transition-colors hover:bg-gray-500';
+            }
+        }
+
+        // 실시간 화면 너비 표시
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screen-width').textContent = width;
+
+            // 화면 크기 변경 시 Speaking 효과도 재적용
+            if (isSpeaking) {
+                const currentChar = document.getElementById('currentChar');
+                const testChar = document.getElementById('testChar');
+                currentChar.style.transform = width < 640 ? 'scale(1.15)' : 'scale(1.02)';
+                testChar.style.transform = width < 640 ? 'scale(1.15)' : 'scale(1.02)';
+            }
+        }
+
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+    </script>
+
+</body>
+</html>

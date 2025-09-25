@@ -233,9 +233,9 @@ const enGameData: GameData = {
   'song_selection_dilemma': {
     background: BG_BACKSTAGE,
     dialogue: [
-      { character: 'Mira', emotion: 'neutral', text: 'We could play it safe with "Starlight" - the crowd loves that one.', position: 'left' },
-      { character: 'Zoey', emotion: 'neutral', text: 'Or we could debut the new song "Truth". It\'s more personal, more... you.', position: 'right' },
-      { character: 'Rumi', emotion: 'neutral', text: 'Truth... A song about accepting who you really are. Can I really sing about truth when I\'m living a lie?', position: 'center' },
+      { character: 'Mira', emotion: 'neutral', text: 'We could play it safe with "Take down" - the crowd loves that one.', position: 'left' },
+      { character: 'Zoey', emotion: 'neutral', text: 'Or we could debut the new song "Golden". It\'s more personal, more... you.', position: 'right' },
+      { character: 'Rumi', emotion: 'neutral', text: 'Golden... A song about accepting who you really are. Can I really sing about truth when I\'m living a lie?', position: 'center' },
       { character: 'Narrator', text: 'As they discuss, a mysterious figure approaches the practice room.' },
     ],
     nextScene: 'duffy_introduction',
@@ -599,9 +599,9 @@ const koGameData: GameData = {
   'song_selection_dilemma': {
     background: BG_BACKSTAGE,
     dialogue: [
-      { character: 'Mira', emotion: 'neutral', text: '안전하게 "Starlight"로 갈 수도 있어 - 관객들이 좋아하는 곡이니까.', position: 'left' },
-      { character: 'Zoey', emotion: 'neutral', text: '아니면 새 곡 "Truth"를 데뷔시킬 수도 있어. 더 개인적이고, 더... 너다워.', position: 'right' },
-      { character: 'Rumi', emotion: 'neutral', text: 'Truth... 진정한 자신을 받아들이는 노래. 거짓으로 살고 있는 내가 진실에 대해 노래할 수 있을까?', position: 'center' },
+      { character: 'Mira', emotion: 'neutral', text: '안전하게 "Take down"로 갈 수도 있어 - 관객들이 좋아하는 곡이니까.', position: 'left' },
+      { character: 'Zoey', emotion: 'neutral', text: '아니면 새 곡 "Golden"를 데뷔시킬 수도 있어. 더 개인적이고, 더... 너다워.', position: 'right' },
+      { character: 'Rumi', emotion: 'neutral', text: 'Golden... 진정한 자신을 받아들이는 노래. 거짓으로 살고 있는 내가 진실에 대해 노래할 수 있을까?', position: 'center' },
       { character: 'Narrator', text: '그들이 논의하는 동안, 신비로운 인물이 연습실에 다가온다.' },
     ],
     nextScene: 'duffy_introduction',
