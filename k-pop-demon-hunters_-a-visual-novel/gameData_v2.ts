@@ -37,7 +37,7 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Gwi-Ma': {
     name: 'Gwi-Ma',
     sprites: {
-      'neutral': './Gwi-Ma.png'
+      'neutral': './Gwi-ma_real.png'
     },
   },
   'Duffy': {
@@ -51,17 +51,18 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
 // Backgrounds
 const BG_START = './3.background_start.jpg';
 const BG_CONCERT_STAGE = './1.background.png';
-const BG_BACKSTAGE = './2.background.png';
+const BG_BACKSTAGE = './2.background_Gwi-ma-home.jpg';
 const BG_CLINIC = './1.background.png';
-const BG_NIGHT_STREET = './2.background.png';
+const BG_NIGHT_STREET = './2.background_Gwi-ma-home.jpg';
 const BG_AWARDS = './3.background_start.jpg';
 const BG_NAMSAN_TOWER = 'https://i.imgur.com/vHqQwgA.jpg';
-const BG_UNDERGROUND = './2.background.png'; // 지하세계
+const BG_UNDERGROUND = './2.background_Gwi-ma-home.jpg'; // 지하세계
 
 // 새로운 배경들
 const BG_STADIUM = './4.background_stadium.png'; // 공연장
 const BG_HAPPY_ENDING = './5.background_happyending.png'; // 해피엔딩
 const BG_BETRAYED_RUMI = './6.background_betrayedRumi.png'; // 루미 배신
+const BG_BITTERSWEET_ENDING = './7.background_bittersweet.png'; // 비터스윗 엔딩
 
 const enGameData: GameData = {
   // ========== ACT 1: 귀마의 계략과 운명적 만남 ==========
@@ -405,7 +406,7 @@ const enGameData: GameData = {
   },
 
   'bittersweet_ending_path': {
-    background: BG_STADIUM,
+    background: BG_BITTERSWEET_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: 'I am both hunter and demon - and I choose to protect those I love!', position: 'center' },
       { character: 'Narrator', text: 'Rumi\'s song erupts with newfound power, but Gwi-Ma retaliates with devastating force.' },
@@ -765,7 +766,7 @@ const koGameData: GameData = {
   },
 
   'bittersweet_ending_path': {
-    background: BG_STADIUM,
+    background: BG_BITTERSWEET_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: '나는 헌터이자 악령 - 그리고 사랑하는 사람들을 보호하기로 선택해!', position: 'center' },
       { character: 'Narrator', text: '루미의 노래가 새로운 힘으로 터져 나오지만, 귀마가 파괴적인 힘으로 반격한다.' },
