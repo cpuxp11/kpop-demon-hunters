@@ -63,6 +63,7 @@ const BG_STADIUM = './4.background_stadium.png'; // 공연장
 const BG_HAPPY_ENDING = './5.background_happyending.png'; // 해피엔딩
 const BG_BETRAYED_RUMI = './6.background_betrayedRumi.png'; // 루미 배신
 const BG_BITTERSWEET_ENDING = './7.background_bittersweet.png'; // 비터스윗 엔딩
+const BG_BAD_ENDING = './9.background_bad_ending.jpg'; // 배드 엔딩
 
 const enGameData: GameData = {
   // ========== ACT 1: 귀마의 계략과 운명적 만남 ==========
@@ -421,7 +422,7 @@ const enGameData: GameData = {
   },
 
   'bad_ending_path': {
-    background: BG_STADIUM,
+    background: BG_BAD_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: 'I don\'t need anyone! I\'ll face this alone!', position: 'center' },
       { character: 'Narrator', text: 'But isolation is exactly what Gwi-Ma wanted. Alone, Rumi cannot muster enough power.' },
@@ -781,7 +782,7 @@ const koGameData: GameData = {
   },
 
   'bad_ending_path': {
-    background: BG_STADIUM,
+    background: BG_BAD_ENDING,
     dialogue: [
       { character: 'Rumi', emotion: 'angry', text: '누구도 필요 없어! 혼자서 맞설 거야!', position: 'center' },
       { character: 'Narrator', text: '하지만 고립이 바로 귀마가 원하던 것이었다. 혼자서는 루미가 충분한 힘을 모을 수 없다.' },
