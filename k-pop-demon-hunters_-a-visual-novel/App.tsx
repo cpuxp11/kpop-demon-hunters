@@ -5,6 +5,7 @@ import { translations } from './gameData_v2';
 import GameScreen from './components/GameScreen_v2';
 
 type Language = 'en' | 'ko';
+type EndingType = 'happy' | 'bittersweet' | 'bad' | null;
 
 interface LanguageContextType {
   language: Language;
@@ -42,9 +43,24 @@ const App: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [autoAdvanceTimer, setAutoAdvanceTimer] = useState<NodeJS.Timeout | null>(null);
   const [gameFlags, setGameFlags] = useState<{ [key: string]: number | boolean }>({});
+  const [endingType, setEndingType] = useState<EndingType>(null);
 
   const currentScene = gameData[currentSceneId];
   const currentDialogue = currentScene?.dialogue[dialogueIndex];
+
+  // 엔딩별 배경 매핑
+  const getEndingBackground = (ending: EndingType): string => {
+    switch (ending) {
+      case 'happy':
+        return './5.background_happyending.png';
+      case 'bittersweet':
+        return './7.background_bittersweet.jpg';
+      case 'bad':
+        return './9.background_bad_ending.jpg';
+      default:
+        return 'https://i.imgur.com/vHqQwgA.jpg'; // 기본 배경
+    }
+  };
 
   const handleNext = useCallback(() => {
     // 중복 클릭 방지
@@ -67,6 +83,14 @@ const App: React.FC = () => {
           setCurrentSceneId(currentScene.nextScene);
           setDialogueIndex(0);
         } else {
+          // 엔딩 타입 감지
+          if (currentSceneId === 'happy_ending_path') {
+            setEndingType('happy');
+          } else if (currentSceneId === 'bittersweet_ending_path') {
+            setEndingType('bittersweet');
+          } else if (currentSceneId === 'bad_ending_path') {
+            setEndingType('bad');
+          }
           setGameState(GameState.EndMenu);
         }
       }
@@ -251,6 +275,8 @@ const App: React.FC = () => {
   
   const restartGame = () => {
     setGameState(GameState.StartMenu);
+    setEndingType(null);
+    setGameFlags({});
   }
 
   return (
@@ -300,9 +326,9 @@ const App: React.FC = () => {
         )}
         
         {gameState === GameState.EndMenu && (
-           <div 
+           <div
             className="w-full h-full bg-cover bg-center flex flex-col items-center justify-center text-white"
-            style={{backgroundImage: `url('https://i.imgur.com/vHqQwgA.jpg')`}}
+            style={{backgroundImage: `url('${getEndingBackground(endingType)}')`}}
           >
             <div className="bg-black bg-opacity-70 p-12 rounded-lg text-center">
               <h1 className="text-5xl font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">{t.toBeContinued}</h1>

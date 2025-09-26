@@ -64,6 +64,8 @@ const BG_HAPPY_ENDING = './5.background_happyending.png'; // 해피엔딩
 const BG_BETRAYED_RUMI = './6.background_betrayedRumi.png'; // 루미 배신
 const BG_BITTERSWEET_ENDING = './7.background_bittersweet.jpg'; // 비터스윗 엔딩
 const BG_BAD_ENDING = './9.background_bad_ending.jpg'; // 배드 엔딩
+const BG_FIRST_STADIUM = './11.background_first_stadium.png'; // 첫 공연 스타디움
+const BG_HUNTRIX_HOME = './12.background_huntrix_home.png'; // 헌트릭스 홈
 
 const enGameData: GameData = {
   // ========== ACT 1: 귀마의 계략과 운명적 만남 ==========
@@ -100,7 +102,7 @@ const enGameData: GameData = {
   },
 
   'rumi_performance_crisis': {
-    background: BG_STADIUM,
+    background: BG_FIRST_STADIUM,
     dialogue: [
       { character: 'Narrator', text: 'Meanwhile, HUNTR/X performs before thousands of adoring fans.' },
       { character: 'Mira', emotion: 'neutral', text: 'The energy tonight is incredible!', position: 'left' },
@@ -119,7 +121,7 @@ const enGameData: GameData = {
   },
 
   'backstage_panic': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Rumi', emotion: 'sad', text: 'How am I supposed to fix the world, fix me, when I don\'t have my voice? Why? WHY!?', position: 'center' },
       { character: 'Mira', emotion: 'neutral', text: 'Rumi! What happened out there? What were those... marks?', position: 'left' },
@@ -131,7 +133,7 @@ const enGameData: GameData = {
   },
 
   'seeking_help': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Mira', emotion: 'neutral', text: 'Look, I know a place. An old traditional clinic. Maybe they can help.', position: 'left' },
       { character: 'Zoey', emotion: 'neutral', text: 'Ancient remedies sometimes work where modern medicine fails.', position: 'right' },
@@ -218,7 +220,7 @@ const enGameData: GameData = {
   // ========== ACT 2: 관계의 발전과 시험 ==========
 
   'act2_preparation': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Narrator', text: 'Two weeks later, HUNTR/X prepares for their biggest performance yet.' },
       { character: 'Mira', emotion: 'neutral', text: 'The press is still buzzing about the last show. We need this one to be perfect.', position: 'left' },
@@ -233,7 +235,7 @@ const enGameData: GameData = {
   },
 
   'song_selection_dilemma': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Mira', emotion: 'neutral', text: 'We could play it safe with "Take down" - the crowd loves that one.', position: 'left' },
       { character: 'Zoey', emotion: 'neutral', text: 'Or we could debut the new song "Golden". It\'s more personal, more... you.', position: 'right' },
@@ -470,7 +472,7 @@ const koGameData: GameData = {
   },
 
   'rumi_performance_crisis': {
-    background: BG_STADIUM,
+    background: BG_FIRST_STADIUM,
     dialogue: [
       { character: 'Narrator', text: '한편, 헌트릭스는 수만 명의 열광적인 팬들 앞에서 공연을 하고 있다.' },
       { character: 'Mira', emotion: 'neutral', text: '오늘 밤 에너지가 대단해!', position: 'left' },
@@ -489,7 +491,7 @@ const koGameData: GameData = {
   },
 
   'backstage_panic': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Rumi', emotion: 'sad', text: '내 목소리가 없는데 어떻게 세상을 구하고, 나를 고칠 수 있겠어? 왜? 왜지!?', position: 'center' },
       { character: 'Mira', emotion: 'neutral', text: '루미! 무대에서 무슨 일이야? 그 문양들은 뭐야?', position: 'left' },
@@ -501,7 +503,7 @@ const koGameData: GameData = {
   },
 
   'seeking_help': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Mira', emotion: 'neutral', text: '봐, 내가 아는 곳이 있어. 오래된 전통 한의원. 아마 도움이 될 거야.', position: 'left' },
       { character: 'Zoey', emotion: 'neutral', text: '고대 치료법이 때로는 현대 의학이 실패하는 곳에서 효과가 있어.', position: 'right' },
@@ -584,7 +586,7 @@ const koGameData: GameData = {
   },
 
   'act2_preparation': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Narrator', text: '2주 후, 헌트릭스는 지금까지 가장 큰 공연을 준비한다.' },
       { character: 'Mira', emotion: 'neutral', text: '언론이 아직도 지난 공연에 대해 떠들고 있어. 이번엔 완벽해야 해.', position: 'left' },
@@ -599,7 +601,7 @@ const koGameData: GameData = {
   },
 
   'song_selection_dilemma': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Mira', emotion: 'neutral', text: '안전하게 "Take down"로 갈 수도 있어 - 관객들이 좋아하는 곡이니까.', position: 'left' },
       { character: 'Zoey', emotion: 'neutral', text: '아니면 새 곡 "Golden"를 데뷔시킬 수도 있어. 더 개인적이고, 더... 너다워.', position: 'right' },
