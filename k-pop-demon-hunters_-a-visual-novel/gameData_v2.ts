@@ -5,10 +5,10 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Rumi': {
     name: 'Rumi',
     sprites: {
-      'neutral': './Rumi.png',
-      'sad': './Rumi.png',
-      'angry': './Rumi.png',
-      'surprised': './Rumi.png'
+      'neutral': './Rumi_half.png',
+      'sad': './Rumi_half.png',
+      'angry': './Rumi_half.png',
+      'surprised': './Rumi_half.png'
     },
   },
   'Jinu': {
@@ -43,7 +43,7 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Duffy': {
     name: 'Duffy',
     sprites: {
-      'neutral': './Mira.png' // 임시로 미라 이미지 사용
+      'neutral': './Dufy.png'
     },
   },
 };
@@ -51,9 +51,9 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
 // Backgrounds
 const BG_START = './3.background_start.jpg';
 const BG_CONCERT_STAGE = './1.background.png';
-const BG_BACKSTAGE = './2.background_Gwi-ma-home.jpg';
+const BG_BACKSTAGE = './1.background.png'; // 백스테이지
 const BG_CLINIC = './1.background.png';
-const BG_NIGHT_STREET = './2.background_Gwi-ma-home.jpg';
+const BG_NIGHT_STREET = './8.background_narksanpark.png'; // 밤거리/다리
 const BG_AWARDS = './3.background_start.jpg';
 const BG_NAMSAN_TOWER = 'https://i.imgur.com/vHqQwgA.jpg';
 const BG_UNDERGROUND = './2.background_Gwi-ma-home.jpg'; // 지하세계
@@ -62,7 +62,7 @@ const BG_UNDERGROUND = './2.background_Gwi-ma-home.jpg'; // 지하세계
 const BG_STADIUM = './4.background_stadium.png'; // 공연장
 const BG_HAPPY_ENDING = './5.background_happyending.png'; // 해피엔딩
 const BG_BETRAYED_RUMI = './6.background_betrayedRumi.png'; // 루미 배신
-const BG_BITTERSWEET_ENDING = './7.background_bittersweet.png'; // 비터스윗 엔딩
+const BG_BITTERSWEET_ENDING = './7.background_bittersweet.jpg'; // 비터스윗 엔딩
 const BG_BAD_ENDING = './9.background_bad_ending.jpg'; // 배드 엔딩
 
 const enGameData: GameData = {
