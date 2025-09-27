@@ -29,14 +29,17 @@ const CharacterSprite: React.FC<CharacterSpriteProps> = ({ src, alt, position, i
 
   return (
     <div
-      className={`absolute bottom-0 h-full w-auto transition-all duration-500 ease-in-out ${getPositionClasses()} ${visibilityEffect} ${speakingEffect}`}
+      className={`absolute bottom-0 w-auto transition-all duration-500 ease-in-out ${getPositionClasses()} ${visibilityEffect} ${speakingEffect}`}
+      style={{
+        height: window.innerWidth >= 768 ? '70vh' : '85vh'
+      }}
     >
       <img
         src={src}
         alt={alt}
         className="h-full w-auto object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
         style={{
-          maxWidth: window.innerWidth >= 768 ? '30vw' : '45vw'
+          maxWidth: window.innerWidth >= 768 ? '30vw' : '90vw'
         }}
       />
     </div>
