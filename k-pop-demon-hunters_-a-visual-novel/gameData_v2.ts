@@ -43,15 +43,13 @@ export const characters: { [id: string]: Omit<Character, 'id'> } = {
   'Duffy': {
     name: 'Duffy',
     sprites: {
-      'neutral': './Dufy.png'
+      'neutral': './Duffy.png'
     },
   },
 };
 
 // Backgrounds
 const BG_START = './3.background_start.jpg';
-const BG_CONCERT_STAGE = './1.background.png';
-const BG_BACKSTAGE = './1.background.png'; // 백스테이지
 const BG_CLINIC = './10.background_han.png'; // 한의원
 const BG_NIGHT_STREET = './8.background_narksanpark.png'; // 밤거리/다리
 const BG_AWARDS = './3.background_start.jpg';
@@ -246,7 +244,7 @@ const enGameData: GameData = {
   },
 
   'duffy_introduction': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Duffy', emotion: 'neutral', text: 'Excuse me, miss Rumi? I have a message for you.', position: 'right' },
       { character: 'Rumi', emotion: 'surprised', text: 'Who are you? How did you get back here?', position: 'left' },
@@ -259,7 +257,7 @@ const enGameData: GameData = {
   },
 
   'second_choice_moment': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Duffy', emotion: 'neutral', text: 'The choice is yours, but some opportunities don\'t come twice. He seemed... desperate.', position: 'right' },
       { character: 'Mira', emotion: 'neutral', text: 'Rumi, we don\'t know this person. It could be a trap.', position: 'left' },
@@ -303,7 +301,7 @@ const enGameData: GameData = {
 
   // ========== INDEPENDENT PATH ==========
   'independent_path': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Rumi', emotion: 'neutral', text: 'No. I need to focus on what\'s important - our music, our fans.', position: 'center' },
       { character: 'Duffy', emotion: 'neutral', text: 'I understand. But remember - sometimes the help we refuse is the help we need most.', position: 'right' },
@@ -327,7 +325,7 @@ const enGameData: GameData = {
   },
 
   'performance_preparation': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Narrator', text: 'The night of the grand performance arrives. The largest arena in the city is packed.' },
       { character: 'Mira', emotion: 'neutral', text: 'This is it. Our biggest audience yet.', position: 'left' },
@@ -612,7 +610,7 @@ const koGameData: GameData = {
   },
 
   'duffy_introduction': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Duffy', emotion: 'neutral', text: '실례합니다, 루미씨? 당신에게 전할 메시지가 있어요.', position: 'right' },
       { character: 'Rumi', emotion: 'surprised', text: '누구세요? 어떻게 여기까지 들어왔죠?', position: 'left' },
@@ -625,7 +623,7 @@ const koGameData: GameData = {
   },
 
   'second_choice_moment': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Duffy', emotion: 'neutral', text: '선택은 당신 몫이지만, 어떤 기회는 두 번 오지 않아요. 그가 절망적으로 보였거든요.', position: 'right' },
       { character: 'Mira', emotion: 'neutral', text: '루미, 우리는 이 사람을 모르잖아. 함정일 수도 있어.', position: 'left' },
@@ -667,7 +665,7 @@ const koGameData: GameData = {
   },
 
   'independent_path': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Rumi', emotion: 'neutral', text: '아니야. 중요한 것에 집중해야 해 - 우리 음악, 우리 팬들.', position: 'center' },
       { character: 'Duffy', emotion: 'neutral', text: '이해합니다. 하지만 기억하세요 - 때로는 우리가 거절하는 도움이 가장 필요한 도움이기도 해요.', position: 'right' },
@@ -691,7 +689,7 @@ const koGameData: GameData = {
   },
 
   'performance_preparation': {
-    background: BG_BACKSTAGE,
+    background: BG_HUNTRIX_HOME,
     dialogue: [
       { character: 'Narrator', text: '대공연의 밤이 도착했다. 도시에서 가장 큰 아레나가 가득 찼다.' },
       { character: 'Mira', emotion: 'neutral', text: '바로 이거야. 지금까지 가장 큰 관객이야.', position: 'left' },
