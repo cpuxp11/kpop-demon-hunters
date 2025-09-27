@@ -35,6 +35,9 @@ const CharacterSprite: React.FC<CharacterSpriteProps> = ({ src, alt, position, i
         src={src}
         alt={alt}
         className="h-full w-auto object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
+        style={{
+          maxWidth: window.innerWidth >= 768 ? '30vw' : '45vw'
+        }}
       />
     </div>
   );
